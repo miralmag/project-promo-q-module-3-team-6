@@ -1,0 +1,15 @@
+.second {
+  &__header {
+    height: 111px;
+    display: flex;
+    justify-content: center;
+    @media all and (min-width: 768px) {
+      justify-content: flex-start;
+    }
+  }
+
+  &__logo {
+    height: 120px;
+    padding-left: 10px;
+  }
+}
