@@ -1,7 +1,148 @@
 import logo from '../images/jokers_del_script.png';
 import '../styles/App.scss';
+import {useState} from 'react';
 
 function App() {
+
+  const [collapsable, setCollapsable] = useState(false);
+
+  const handleClickCollapse = (ev) => {
+    setCollapsable(!collapsable);
+  };
+
+  const renderFillForm = () => {
+    if (collapsable) {
+      return (<div className="js-fillFieldset js_allInputs">
+      <form className="fill__form" action="#" method="post">
+        <label htmlFor="name">
+          {' '}
+          Nombre completo<span>*</span>
+        </label>
+
+        <input
+          className="fill__form--imput js_inputName js_input"
+          placeholder="Ej: Sally Hill"
+          id="name"
+          type="text"
+          name="name"
+          required=""
+        />
+
+        <label htmlFor="job">
+          Puesto<span>*</span>
+        </label>
+        <input
+          className="fill__form--imput js_inputJob js_input"
+          placeholder="Ej: Front-end unicorn"
+          id="job"
+          type="text"
+          name="job"
+          required=""
+        />
+
+        <p className="profileImgTitle">
+          Imagen de perfil<span>*</span>
+        </p>
+
+        <div className="imgButton">
+          <div className="action">
+            <label className="action__upload-btn" htmlFor="profileImg">
+              Añadir imagen
+            </label>
+            <input
+              type="file"
+              name="profileImg"
+              id="profileImg"
+              className="action__hiddenField js__profile-upload-btn js_inputImg js_input"
+              required=""
+            />
+          </div>
+          <div className="profile__preview js__profile-preview"></div>
+        </div>
+
+        <label htmlFor="email">
+          Email<span>*</span>
+        </label>
+        <input
+          className="fill__form--imput js_inputEmail js_input"
+          placeholder="Ej: sally-hill@gmail.com"
+          id="email"
+          type="email"
+          name="email"
+          required=""
+        />
+
+        <label htmlFor="phone">Teléfono</label>
+        <input
+          className="fill__form--imput js_inputTel"
+          placeholder="Ej: 555-55-55-55"
+          id="phone"
+          type="tel"
+          name="phone"
+        />
+
+        <label htmlFor="linkedin">
+          LinkedIn<span>*</span>
+        </label>
+        <input
+          className="fill__form--imput js_inputLinkedin js_input"
+          placeholder="Ej: https://www.linkedin.com/in/sally-hill/"
+          id="linkedin"
+          type="text"
+          name="linkedin"
+          required=""
+        />
+
+        <label htmlFor="github">
+          Github <span>*</span>{' '}
+        </label>
+        <input
+          className="fill__form--imput js_inputGithub js_input"
+          placeholder="Ej: https://github.com/sally-hill/"
+          id="github"
+          type="text"
+          name="github"
+          required=""
+        />
+      </form>
+    </div>
+      )
+    } else {return null};
+  };
+
+  const renderShareForm = () => {
+    if (collapsable) {
+      return (
+      <>
+      <div className="share1__container js-shareFieldset collapsed">
+      <button className="share1__container--button js_shareBtn">
+        <i className="fa-solid fa-address-card"></i> Crear tarjeta
+      </button>
+      <p className="js_warning warning"></p>
+    </div>
+
+    <div className="js_shareTwitter collapsed">
+      {/* <!-- ^este div va con la clase share2 --> */}
+
+      <p className="share2__p">La tarjeta ha sido creada:</p>
+
+      <div className="share2">
+        <a
+          className="share2__link js_link-card"
+          href="https://awesome-profile-card.com?id=A456DF0001"
+          target="_blank"
+        ></a>
+        <a href="#" className="js_shareTwitterBtn" target="_blank">
+          <button className="share2__button--twitter">
+            <i className="fa-brands fa-twitter"></i>Compartir en twitter
+          </button>
+        </a>
+      </div>
+    </div>
+    </>)
+    } else {return null};
+  };
+
   return (
     <div className="App">
       <header className="second__header">
@@ -138,7 +279,7 @@ function App() {
           </fieldset>
 
           <fieldset className="fill">
-            <div className="fill__title js-fill" id="fill">
+            <div className="fill__title js-fill" id="fill" onClick={handleClickCollapse}>
               <div className="container">
                 <i className="fill__title--icon fa-solid fa-keyboard"></i>
                 <h3 className="fill__title--word">rellena</h3>
@@ -146,136 +287,21 @@ function App() {
               <i className="fill__title--chevron fa-solid fa-chevron-up js-fill-arrow"></i>
             </div>
 
-            <div className="js-fillFieldset collapsed js_allInputs">
-              <form className="fill__form" action="#" method="post">
-                <label htmlFor="name">
-                  {' '}
-                  Nombre completo<span>*</span>
-                </label>
+            {renderFillForm()}
 
-                <input
-                  className="fill__form--imput js_inputName js_input"
-                  placeholder="Ej: Sally Hill"
-                  id="name"
-                  type="text"
-                  name="name"
-                  required=""
-                />
-
-                <label htmlFor="job">
-                  Puesto<span>*</span>
-                </label>
-                <input
-                  className="fill__form--imput js_inputJob js_input"
-                  placeholder="Ej: Front-end unicorn"
-                  id="job"
-                  type="text"
-                  name="job"
-                  required=""
-                />
-
-                <p className="profileImgTitle">
-                  Imagen de perfil<span>*</span>
-                </p>
-
-                <div className="imgButton">
-                  <div className="action">
-                    <label className="action__upload-btn" htmlFor="profileImg">
-                      Añadir imagen
-                    </label>
-                    <input
-                      type="file"
-                      name="profileImg"
-                      id="profileImg"
-                      className="action__hiddenField js__profile-upload-btn js_inputImg js_input"
-                      required=""
-                    />
-                  </div>
-                  <div className="profile__preview js__profile-preview"></div>
-                </div>
-
-                <label htmlFor="email">
-                  Email<span>*</span>
-                </label>
-                <input
-                  className="fill__form--imput js_inputEmail js_input"
-                  placeholder="Ej: sally-hill@gmail.com"
-                  id="email"
-                  type="email"
-                  name="email"
-                  required=""
-                />
-
-                <label htmlFor="phone">Teléfono</label>
-                <input
-                  className="fill__form--imput js_inputTel"
-                  placeholder="Ej: 555-55-55-55"
-                  id="phone"
-                  type="tel"
-                  name="phone"
-                />
-
-                <label htmlFor="linkedin">
-                  LinkedIn<span>*</span>
-                </label>
-                <input
-                  className="fill__form--imput js_inputLinkedin js_input"
-                  placeholder="Ej: https://www.linkedin.com/in/sally-hill/"
-                  id="linkedin"
-                  type="text"
-                  name="linkedin"
-                  required=""
-                />
-
-                <label htmlFor="github">
-                  Github <span>*</span>{' '}
-                </label>
-                <input
-                  className="fill__form--imput js_inputGithub js_input"
-                  placeholder="Ej: https://github.com/sally-hill/"
-                  id="github"
-                  type="text"
-                  name="github"
-                  required=""
-                />
-              </form>
-            </div>
           </fieldset>
 
           <fieldset className="share1">
-            <div className="share1__div js-share" id="share">
+            <div className="share1__div js-share" id="share" onClick={handleClickCollapse}>
               <div className="header-container">
                 <i className="fa-solid share1__div--icon fa-share-nodes"></i>
                 <h3 className="share1__div--h3">Comparte</h3>
               </div>
               <i className="share1__div--up fa-solid fa-chevron-up js-share-arrow"></i>
             </div>
-
-            <div className="share1__container js-shareFieldset collapsed">
-              <button className="share1__container--button js_shareBtn">
-                <i className="fa-solid fa-address-card"></i> Crear tarjeta
-              </button>
-              <p className="js_warning warning"></p>
-            </div>
-
-            <div className="js_shareTwitter collapsed">
-              {/* <!-- ^este div va con la clase share2 --> */}
-
-              <p className="share2__p">La tarjeta ha sido creada:</p>
-
-              <div className="share2">
-                <a
-                  className="share2__link js_link-card"
-                  href="https://awesome-profile-card.com?id=A456DF0001"
-                  target="_blank"
-                ></a>
-                <a href="#" className="js_shareTwitterBtn" target="_blank">
-                  <button className="share2__button--twitter">
-                    <i className="fa-brands fa-twitter"></i>Compartir en twitter
-                  </button>
-                </a>
-              </div>
-            </div>
+          
+          {renderShareForm()}
+           
           </fieldset>
 
           {/* <!-- <div className="js-shareFieldset"> -->
