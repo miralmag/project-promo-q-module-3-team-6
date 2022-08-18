@@ -26,7 +26,7 @@ function App() {
     const inputValue = ev.target.value;
 
     setDataCard({ ...dataCard, [inputName]: inputValue });
-    setPaletteNumber(inputValue);
+    setPaletteNumber(dataCard.palette);
   };
 
   const handleReset = (ev) => {
@@ -288,12 +288,12 @@ function App() {
                 <label className="color-palet" htmlFor="colors1">
                   <input
                     className="js_radio js_firstRadio"
-                    id="colors1"
+                    id="1"
                     type="radio"
                     value="1"
                     name="palette"
                     checked={dataCard.palette === '1'}
-                    onChange={handleInput}
+                    onClick={handleInput}
                   />
                   <div className="election__options rectangle">
                     <div className="rectangle-1__a"></div>
@@ -307,11 +307,11 @@ function App() {
                 <label className="color-palet" htmlFor="colors2">
                   <input
                     className="js_radio"
-                    id="colors2"
+                    id="2"
                     type="radio"
                     value="2"
                     name="palette"
-                    onChange={handleInput}
+                    onClick={handleInput}
                     checked={dataCard.palette === '2'}
                   />
                   <div className="election__options rectangle">
@@ -326,11 +326,11 @@ function App() {
                 <label className="color-palet" htmlFor="colors3">
                   <input
                     className="js_radio"
-                    id="colors3"
+                    id="3"
                     type="radio"
                     value="3"
                     name="palette"
-                    onChange={handleInput}
+                    onClick={handleInput}
                     checked={dataCard.palette === '3'}
                   />
                   <div className="election__options rectangle">
