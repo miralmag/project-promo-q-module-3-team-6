@@ -1,6 +1,9 @@
-import logo from '../images/jokers_del_script.png';
 import '../styles/App.scss';
 import { useState } from 'react';
+import dataApi from '../services/api';
+import Header from './Header';
+import Footer from './Footer';
+import CardPreview from './CardPreview';
 
 function App() {
   const [collapsable, setCollapsable] = useState(false);
@@ -16,6 +19,7 @@ function App() {
   });
 
   const [paletteNumber, setPaletteNumber] = useState('1');
+  const [resultCard, setResultCard] = useState({});
 
   const handleClickCollapse = (ev) => {
     setCollapsable(!collapsable);
@@ -165,14 +169,24 @@ function App() {
     }
   };
 
+  const handleCreateCard = (ev) => {
+    ev.preventDefault();
+    dataApi(dataCard).then((info) => setResultCard(info));
+    console.log(resultCard.sucess ? resultCard.cardURL : resultCard.error);
+  };
+
   const renderShareForm = () => {
     if (collapsable) {
       return (
         <>
-          <div className="share1__container js-shareFieldset collapsed">
-            <button className="share1__container--button js_shareBtn">
+          <div className="share1__container js-shareFieldset">
+            <button
+              className="share1__container--button js_shareBtn"
+              onClick={handleCreateCard}
+            >
               <i className="fa-solid fa-address-card"></i> Crear tarjeta
             </button>
+            <h1>{resultCard.sucess ? resultCard.cardURL : resultCard.error}</h1>
             <p className="js_warning warning"></p>
           </div>
 
@@ -203,81 +217,9 @@ function App() {
 
   return (
     <div className="App">
-      <header className="second__header">
-        <a href="./index.html">
-          <img
-            className="second__logo"
-            src={logo}
-            alt="logo-awesome-profile-cards"
-            title="Logo Awesome Profile-Cards"
-          />
-        </a>
-      </header>
-
+      <Header />
       <main className="main">
-        <section className="main__preview">
-          <button className="button js-reset-btn" onClick={handleReset}>
-            <i className="fa-solid fa-bomb"></i>
-            <p className="button__reset">Reset</p>
-          </button>
-          <aside
-            className={`card js_preview-container palette-${paletteNumber}`}
-          >
-            <div className="card__info">
-              <p className="card__info--name js_previewName" id="name">
-                {dataCard.name || `Nombre apellidos`}
-              </p>
-              <p className="card__info--job js_previewJob" id="job">
-                {dataCard.job || `Frontend Developer`}
-              </p>
-            </div>
-            <div
-              className="card__photo js__profile-image"
-              id="profileImage"
-            ></div>
-            <ol className="rrss">
-              <li className="rrss__list">
-                <a
-                  className="js_previewTel js_previewBtn"
-                  id="phone"
-                  href={`tel:${dataCard.phone}`}
-                >
-                  <i className="rrss__list--item fa-solid fa-mobile-screen fa-xl"></i>
-                </a>
-              </li>
-              <li className="rrss__list">
-                <a
-                  target="_blank"
-                  className="js_previewEmail js_previewBtn"
-                  id="email"
-                  href={`mailto:${dataCard.email}`}
-                >
-                  <i className="rrss__list--item fa-regular fa-envelope fa-xl"></i>
-                </a>
-              </li>
-              <li className="rrss__list">
-                <a
-                  target="_blank"
-                  className="js_previewLinkedin js_previewBtn"
-                  id="linkedin"
-                  href={`https://www.${dataCard.linkedin}`}
-                >
-                  <i className="rrss__list--item fa-brands fa-linkedin-in fa-xl"></i>
-                </a>
-              </li>
-              <li className="rrss__list">
-                <a
-                  target="_blank"
-                  className="js_previewGithub js_previewBtn"
-                  id="github"
-                  href={`https://github.com/${dataCard.github.slice(1)}`}
-                >
-                  <i className="rrss__list--item fa-brands fa-github-alt fa-xl"></i>
-                </a>
-              </li>
-            </ol>
-          </aside>
-        </section>
+        <CardPreview paletteNumber={paletteNumber} dataCard={dataCard} />
 
         <section className="main__container">
           <fieldset className="design">
@@ -387,15 +329,7 @@ function App() {
         <!-- <fieldset className="share2"> --> */}
         </section>
       </main>
-
-      <footer className="footer">
-        <p className="footer__copyright">Awesome profile-cards © 2022</p>
-        <img
-          className="footer__logo"
-          src="./assets/images/logo-adalab-red.png"
-          alt="Logo"
-        />
-      </footer>
+      <Footer />
 
       <script src="./assets/js/main.js"></script>
     </div>

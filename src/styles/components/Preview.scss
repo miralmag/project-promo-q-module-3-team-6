@@ -1,3 +1,6 @@
+@import '../core/variables';
+@import '../core/reset';
+
 .main {
   background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(8, 8, 8) 36%);
   gap: 20px;
