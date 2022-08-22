@@ -26,7 +26,13 @@ function App() {
     const inputValue = ev.target.value;
 
     setDataCard({ ...dataCard, [inputName]: inputValue });
-    setPaletteNumber(dataCard.palette);
+  };
+
+  const handlePalette = (ev) => {
+    const inputName = ev.target.name;
+    const inputValue = ev.target.value;
+    setDataCard({ ...dataCard, [inputName]: inputValue });
+    setPaletteNumber(inputValue);
   };
 
   const handleReset = (ev) => {
@@ -41,6 +47,7 @@ function App() {
       github: '',
       photo: '',
     });
+    setPaletteNumber('1');
   };
 
   const renderFillForm = () => {
@@ -293,7 +300,7 @@ function App() {
                     value="1"
                     name="palette"
                     checked={dataCard.palette === '1'}
-                    onClick={handleInput}
+                    onClick={handlePalette}
                   />
                   <div className="election__options rectangle">
                     <div className="rectangle-1__a"></div>
@@ -311,7 +318,7 @@ function App() {
                     type="radio"
                     value="2"
                     name="palette"
-                    onClick={handleInput}
+                    onClick={handlePalette}
                     checked={dataCard.palette === '2'}
                   />
                   <div className="election__options rectangle">
@@ -330,7 +337,7 @@ function App() {
                     type="radio"
                     value="3"
                     name="palette"
-                    onClick={handleInput}
+                    onClick={handlePalette}
                     checked={dataCard.palette === '3'}
                   />
                   <div className="election__options rectangle">
