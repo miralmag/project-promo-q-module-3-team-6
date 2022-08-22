@@ -4,6 +4,7 @@ import dataApi from '../services/api';
 import Header from './Header';
 import Footer from './Footer';
 import CardPreview from './CardPreview';
+import Share from './Share';
 
 function App() {
   const [collapsable, setCollapsable] = useState(false);
@@ -308,21 +309,7 @@ function App() {
             {renderFillForm()}
           </fieldset>
 
-          <fieldset className="share1">
-            <div
-              className="share1__div js-share"
-              id="share"
-              onClick={handleClickCollapse}
-            >
-              <div className="header-container">
-                <i className="fa-solid share1__div--icon fa-share-nodes"></i>
-                <h3 className="share1__div--h3">Comparte</h3>
-              </div>
-              <i className="share1__div--up fa-solid fa-chevron-up js-share-arrow"></i>
-            </div>
-
-            {renderShareForm()}
-          </fieldset>
+          <Share />
 
           {/* <!-- <div className="js-shareFieldset"> -->
         <!-- <fieldset className="share1"> -->
