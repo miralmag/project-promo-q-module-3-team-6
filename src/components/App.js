@@ -5,6 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import CardPreview from './CardPreview';
 import Share from './Share';
+import Design from './Design';
 
 function App() {
   const [collapsable, setCollapsable] = useState(false);
@@ -33,11 +34,9 @@ function App() {
     setDataCard({ ...dataCard, [inputName]: inputValue });
   };
 
-  const handlePalette = (ev) => {
-    const inputName = ev.target.name;
-    const inputValue = ev.target.value;
-    setDataCard({ ...dataCard, [inputName]: inputValue });
-    setPaletteNumber(inputValue);
+  const handlePalette = (idInputRadio) => {
+    setDataCard({ ...dataCard, palette: idInputRadio });
+    setPaletteNumber(idInputRadio);
   };
 
   const handleReset = (ev) => {
@@ -176,46 +175,6 @@ function App() {
     console.log(resultCard.sucess ? resultCard.cardURL : resultCard.error);
   };
 
-  const renderShareForm = () => {
-    if (collapsable) {
-      return (
-        <>
-          <div className="share1__container js-shareFieldset">
-            <button
-              className="share1__container--button js_shareBtn"
-              onClick={handleCreateCard}
-            >
-              <i className="fa-solid fa-address-card"></i> Crear tarjeta
-            </button>
-            <h1>{resultCard.sucess ? resultCard.cardURL : resultCard.error}</h1>
-            <p className="js_warning warning"></p>
-          </div>
-
-          <div className="js_shareTwitter collapsed">
-            {/* <!-- ^este div va con la clase share2 --> */}
-
-            <p className="share2__p">La tarjeta ha sido creada:</p>
-
-            <div className="share2">
-              <a
-                className="share2__link js_link-card"
-                href="https://awesome-profile-card.com?id=A456DF0001"
-                target="_blank"
-              ></a>
-              <a href="#" className="js_shareTwitterBtn" target="_blank">
-                <button className="share2__button--twitter">
-                  <i className="fa-brands fa-twitter"></i>Compartir en twitter
-                </button>
-              </a>
-            </div>
-          </div>
-        </>
-      );
-    } else {
-      return null;
-    }
-  };
-
   return (
     <div className="App">
       <Header />
@@ -223,75 +182,7 @@ function App() {
         <CardPreview paletteNumber={paletteNumber} dataCard={dataCard} />
 
         <section className="main__container">
-          <fieldset className="design">
-            <div className="design__title js-design" id="design">
-              <div className="design__container">
-                <i className="design__title--icon fa-regular fa-object-ungroup"></i>
-                <h2 className="design__title--title">Diseña</h2>
-              </div>
-              <i className="design__title--icon2 fa-solid fa-chevron-up js-design-arrow rotate"></i>
-            </div>
-
-            <div className="election js-designFieldset">
-              <h3 className="design__color">Colores</h3>
-              <div className="election__options point">
-                <label className="color-palet" htmlFor="colors1">
-                  <input
-                    className="js_radio js_firstRadio"
-                    id="1"
-                    type="radio"
-                    value="1"
-                    name="palette"
-                    checked={dataCard.palette === '1'}
-                    onClick={handlePalette}
-                  />
-                  <div className="election__options rectangle">
-                    <div className="rectangle-1__a"></div>
-                    <div className="rectangle-1__b"></div>
-                    <div className="rectangle-1__c"></div>
-                  </div>
-                </label>
-              </div>
-
-              <div className="election__options point">
-                <label className="color-palet" htmlFor="colors2">
-                  <input
-                    className="js_radio"
-                    id="2"
-                    type="radio"
-                    value="2"
-                    name="palette"
-                    onClick={handlePalette}
-                    checked={dataCard.palette === '2'}
-                  />
-                  <div className="election__options rectangle">
-                    <div className="rectangle-2__a"></div>
-                    <div className="rectangle-2__b"></div>
-                    <div className="rectangle-2__c"></div>
-                  </div>
-                </label>
-              </div>
-
-              <div className="election__options point">
-                <label className="color-palet" htmlFor="colors3">
-                  <input
-                    className="js_radio"
-                    id="3"
-                    type="radio"
-                    value="3"
-                    name="palette"
-                    onClick={handlePalette}
-                    checked={dataCard.palette === '3'}
-                  />
-                  <div className="election__options rectangle">
-                    <div className="rectangle-3__a"></div>
-                    <div className="rectangle-3__b"></div>
-                    <div className="rectangle-3__c"></div>
-                  </div>
-                </label>
-              </div>
-            </div>
-          </fieldset>
+          <Design dataCard={dataCard} handlePalette={handlePalette} />
 
           <fieldset className="fill">
             <div
@@ -309,7 +200,12 @@ function App() {
             {renderFillForm()}
           </fieldset>
 
-          <Share />
+          <Share
+            collapsable={collapsable}
+            handleCreateCard={handleCreateCard}
+            resultCard={resultCard}
+            handleClickCollapse={handleClickCollapse}
+          />
 
           {/* <!-- <div className="js-shareFieldset"> -->
         <!-- <fieldset className="share1"> -->
