@@ -53,7 +53,6 @@ function App() {
     setPaletteNumber('1');
   };
 
-
   const handleCreateCard = (ev) => {
     ev.preventDefault();
     dataApi(dataCard).then((info) => setResultCard(info));
@@ -63,10 +62,25 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Landing />}/>
-        <Route path="/card" element={<Card paletteNumber={paletteNumber} dataCard={dataCard} handlePalette={handlePalette} handleClickCollapse={handleClickCollapse} collapsable={collapsable} handleCreateCard={handleCreateCard} resultCard={resultCard} />} />
+        <Route path="/" element={<Landing />} />
+        <Route
+          path="/card"
+          element={
+            <Card
+              paletteNumber={paletteNumber}
+              dataCard={dataCard}
+              handlePalette={handlePalette}
+              handleClickCollapse={handleClickCollapse}
+              collapsable={collapsable}
+              handleCreateCard={handleCreateCard}
+              resultCard={resultCard}
+              handleInput={handleInput}
+              handleReset={handleReset}
+            />
+          }
+        />
       </Routes>
-      
+
       <Footer />
 
       <script src="./assets/js/main.js"></script>
