@@ -69,6 +69,8 @@ function App() {
               collapsable={collapsable}
               handleCreateCard={handleCreateCard}
               resultCard={resultCard}
+              handleInput={handleInput}
+              handleReset={handleReset}
             />
           }
         />

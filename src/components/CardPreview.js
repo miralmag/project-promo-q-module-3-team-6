@@ -3,10 +3,10 @@ import '../styles/components/Preview.scss';
 function CardPreview(props) {
   return (
     <section className="main__preview">
-      {/* <button className="button js-reset-btn" onClick={handleReset}>
+      <button className="button js-reset-btn" onClick={props.handleReset}>
         <i className="fa-solid fa-bomb"></i>
         <p className="button__reset">Reset</p>
-      </button> */}
+      </button>
       <aside
         className={`card js_preview-container palette-${props.dataCard.palette}`}
       >
