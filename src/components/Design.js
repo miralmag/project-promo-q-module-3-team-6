@@ -2,7 +2,7 @@ import '../styles/components/Design.scss';
 
 function Design(props) {
   const paletteInputRadio = (ev) => {
-    ev.preventDefault();
+    // ev.preventDefault();
     props.dataCard.palette = ev.target.value;
     props.handlePalette(ev.target.id);
   };
@@ -24,7 +24,7 @@ function Design(props) {
               className="js_radio js_firstRadio"
               id="1"
               type="radio"
-              value={props.dataCard.palette}
+              value='1'
               name="palette"
               checked={props.dataCard.palette === '1'}
               onChange={paletteInputRadio}
@@ -43,7 +43,7 @@ function Design(props) {
               className="js_radio"
               id="2"
               type="radio"
-              value={props.dataCard.palette}
+              value='2'
               name="palette"
               onChange={paletteInputRadio}
               checked={props.dataCard.palette === '2'}
@@ -62,7 +62,7 @@ function Design(props) {
               className="js_radio"
               id="3"
               type="radio"
-              value={props.dataCard.palette}
+              value="3"
               name="palette"
               onChange={paletteInputRadio}
               checked={props.dataCard.palette === '3'}
