@@ -1,10 +1,9 @@
 import '../styles/components/Design.scss';
 
 function Design(props) {
-  const paletteInputRadio = (ev) => {
+  const handlePalette = (ev) => {
     // ev.preventDefault();
-    props.dataCard.palette = ev.target.value;
-    props.handlePalette(ev.target.id);
+    props.handlePalette(ev.target.value);
   };
   return (
     <fieldset className="design">
@@ -24,10 +23,10 @@ function Design(props) {
               className="js_radio js_firstRadio"
               id="1"
               type="radio"
-              value='1'
+              value="1"
               name="palette"
               checked={props.dataCard.palette === '1'}
-              onChange={paletteInputRadio}
+              onChange={handlePalette}
             />
             <div className="election__options rectangle">
               <div className="rectangle-1__a"></div>
@@ -43,9 +42,9 @@ function Design(props) {
               className="js_radio"
               id="2"
               type="radio"
-              value='2'
+              value="2"
               name="palette"
-              onChange={paletteInputRadio}
+              onChange={handlePalette}
               checked={props.dataCard.palette === '2'}
             />
             <div className="election__options rectangle">
@@ -64,7 +63,7 @@ function Design(props) {
               type="radio"
               value="3"
               name="palette"
-              onChange={paletteInputRadio}
+              onChange={handlePalette}
               checked={props.dataCard.palette === '3'}
             />
             <div className="election__options rectangle">

@@ -8,7 +8,7 @@ function CardPreview(props) {
         <p className="button__reset">Reset</p>
       </button> */}
       <aside
-        className={`card js_preview-container palette-${props.paletteNumber}`}
+        className={`card js_preview-container palette-${props.dataCard.palette}`}
       >
         <div className="card__info">
           <p className="card__info--name js_previewName" id="name">
@@ -31,6 +31,7 @@ function CardPreview(props) {
           </li>
           <li className="rrss__list">
             <a
+              rel="noreferrer"
               target="_blank"
               className="js_previewEmail js_previewBtn"
               id="email"
@@ -41,6 +42,7 @@ function CardPreview(props) {
           </li>
           <li className="rrss__list">
             <a
+              rel="noreferrer"
               target="_blank"
               className="js_previewLinkedin js_previewBtn"
               id="linkedin"
@@ -51,6 +53,7 @@ function CardPreview(props) {
           </li>
           <li className="rrss__list">
             <a
+              rel="noreferrer"
               target="_blank"
               className="js_previewGithub js_previewBtn"
               id="github"

@@ -18,8 +18,6 @@ function App() {
     github: '',
     photo: '',
   });
-
-  const [paletteNumber, setPaletteNumber] = useState('1');
   const [resultCard, setResultCard] = useState({});
 
   const handleClickCollapse = (ev) => {
@@ -33,9 +31,8 @@ function App() {
     setDataCard({ ...dataCard, [inputName]: inputValue });
   };
 
-  const handlePalette = (idInputRadio) => {
-    setDataCard({ ...dataCard, palette: idInputRadio });
-    setPaletteNumber(idInputRadio);
+  const handlePalette = (valueInputRadio) => {
+    setDataCard({ ...dataCard, palette: valueInputRadio });
   };
 
   const handleReset = (ev) => {
@@ -50,9 +47,7 @@ function App() {
       github: '',
       photo: '',
     });
-    setPaletteNumber('1');
   };
-
 
   const handleCreateCard = (ev) => {
     ev.preventDefault();
@@ -63,10 +58,22 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Landing />}/>
-        <Route path="/card" element={<Card paletteNumber={paletteNumber} dataCard={dataCard} handlePalette={handlePalette} handleClickCollapse={handleClickCollapse} collapsable={collapsable} handleCreateCard={handleCreateCard} resultCard={resultCard} />} />
+        <Route path="/" element={<Landing />} />
+        <Route
+          path="/card"
+          element={
+            <Card
+              dataCard={dataCard}
+              handlePalette={handlePalette}
+              handleClickCollapse={handleClickCollapse}
+              collapsable={collapsable}
+              handleCreateCard={handleCreateCard}
+              resultCard={resultCard}
+            />
+          }
+        />
       </Routes>
-      
+
       <Footer />
 
       <script src="./assets/js/main.js"></script>
