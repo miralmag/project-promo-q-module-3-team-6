@@ -7,6 +7,7 @@ import Landing from './Landing';
 import Card from './Card';
 
 function App() {
+  const [avatar, setAvatar] = useState('');
   const [collapsable, setCollapsable] = useState(false);
   const [dataCard, setDataCard] = useState({
     palette: '1',
@@ -19,7 +20,9 @@ function App() {
     photo: '',
   });
   const [resultCard, setResultCard] = useState({});
-
+  const updateAvatar = (avatar) => {
+    setAvatar(avatar);
+  };
   const handleClickCollapse = (ev) => {
     setCollapsable(!collapsable);
   };
@@ -63,6 +66,8 @@ function App() {
           path="/card"
           element={
             <Card
+              avatar={avatar}
+              updateAvatar={updateAvatar}
               dataCard={dataCard}
               handlePalette={handlePalette}
               handleClickCollapse={handleClickCollapse}

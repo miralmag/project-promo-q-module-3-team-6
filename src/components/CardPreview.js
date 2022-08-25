@@ -1,4 +1,5 @@
 import '../styles/components/Preview.scss';
+import Profile from './Profile';
 
 function CardPreview(props) {
   return (
@@ -18,7 +19,9 @@ function CardPreview(props) {
             {props.dataCard.job || `Frontend Developer`}
           </p>
         </div>
-        <div className="card__photo js__profile-image" id="profileImage"></div>
+        <div>
+          <Profile avatar={props.avatar} updateAvatar={props.updateAvatar} />
+        </div>
         <ol className="rrss">
           <li className="rrss__list">
             <a
