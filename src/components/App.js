@@ -19,6 +19,7 @@ function App() {
     github: '',
     photo: '',
   });
+  console.log(dataCard);
   const [resultCard, setResultCard] = useState({});
   const updateAvatar = (avatar) => {
     setAvatar(avatar);
@@ -50,6 +51,7 @@ function App() {
       github: '',
       photo: '',
     });
+    console.log(dataCard);
   };
 
   const handleCreateCard = (ev) => {

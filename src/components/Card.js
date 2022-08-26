@@ -13,6 +13,7 @@ function Card(props) {
           dataCard={props.dataCard}
           avatar={props.avatar}
           updateAvatar={props.updateAvatar}
+          handleReset={props.handleReset}
         />
 
         <section className="main__container">
