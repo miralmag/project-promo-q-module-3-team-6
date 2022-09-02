@@ -1,6 +1,11 @@
-import '../styles/components/Share.scss';
+import "../styles/components/Share.scss";
 
 function Share(props) {
+  const handleCreateCardShare = (ev) => {
+    ev.preventDefault();
+    props.handleCreateCard();
+  };
+
   const renderShareForm = () => {
     if (props.collapsable) {
       return (
@@ -8,7 +13,7 @@ function Share(props) {
           <div className="share1__container js-shareFieldset">
             <button
               className="share1__container--button js_shareBtn"
-              onClick={props.handleCreateCard}
+              onClick={handleCreateCardShare}
             >
               <i className="fa-solid fa-address-card"></i> Crear tarjeta
             </button>
@@ -27,11 +32,18 @@ function Share(props) {
 
             <div className="share2">
               <a
+                alt="linkCard"
+                rel="noreferrer"
                 className="share2__link js_link-card"
                 href="https://awesome-profile-card.com?id=A456DF0001"
                 target="_blank"
               ></a>
-              <a href="#" className="js_shareTwitterBtn" target="_blank">
+              <a
+                rel="noreferrer"
+                href="#"
+                className="js_shareTwitterBtn"
+                target="_blank"
+              >
                 <button className="share2__button--twitter">
                   <i className="fa-brands fa-twitter"></i>Compartir en twitter
                 </button>

@@ -1,15 +1,20 @@
-import '../styles/components/Fill.scss';
-import GetAvatar from './GetAvatar';
-import '../styles/components/GetAvatar.scss';
+import "../styles/components/Fill.scss";
+import GetAvatar from "./GetAvatar";
+import "../styles/components/GetAvatar.scss";
 
 function Fill(props) {
+  const handleInput = (ev) => {
+    const inputName = ev.target.name;
+    const inputValue = ev.target.value;
+    props.handleInput(inputName, inputValue);
+  };
   const renderFillForm = () => {
     if (props.collapsable) {
       return (
         <div className="js-fillFieldset js_allInputs">
           <form className="fill__form" action="#" method="post">
             <label htmlFor="name">
-              {' '}
+              {" "}
               Nombre completo<span>*</span>
             </label>
 
@@ -20,7 +25,7 @@ function Fill(props) {
               type="text"
               name="name"
               required=""
-              onChange={props.handleInput}
+              onChange={handleInput}
               value={props.dataCard.name}
             />
 
@@ -34,7 +39,7 @@ function Fill(props) {
               type="text"
               name="job"
               required=""
-              onChange={props.handleInput}
+              onChange={handleInput}
               value={props.dataCard.job}
             />
 
@@ -57,7 +62,7 @@ function Fill(props) {
               type="email"
               name="email"
               required=""
-              onChange={props.handleInput}
+              onChange={handleInput}
               value={props.dataCard.email}
             />
 
@@ -68,7 +73,7 @@ function Fill(props) {
               id="phone"
               type="tel"
               name="phone"
-              onChange={props.handleInput}
+              onChange={handleInput}
               value={props.dataCard.phone}
             />
 
@@ -82,12 +87,12 @@ function Fill(props) {
               type="text"
               name="linkedin"
               required=""
-              onChange={props.handleInput}
+              onChange={handleInput}
               value={props.dataCard.linkedin}
             />
 
             <label htmlFor="github">
-              Github <span>*</span>{' '}
+              Github <span>*</span>{" "}
             </label>
             <input
               className="fill__form--imput js_inputGithub js_input"
@@ -96,7 +101,7 @@ function Fill(props) {
               type="text"
               name="github"
               required=""
-              onChange={props.handleInput}
+              onChange={handleInput}
               value={props.dataCard.github}
             />
           </form>
