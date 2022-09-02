@@ -17,18 +17,19 @@ function Share(props) {
             >
               <i className="fa-solid fa-address-card"></i> Crear tarjeta
             </button>
-            <h1>
-              {props.resultCard.sucess
-                ? props.resultCard.cardURL
-                : props.resultCard.error}
-            </h1>
+
             <p className="js_warning warning"></p>
           </div>
 
           <div className="js_shareTwitter collapsed">
             {/* <!-- ^este div va con la clase share2 --> */}
 
-            <p className="share2__p">La tarjeta ha sido creada:</p>
+            <p className="share2__p">
+              La tarjeta ha sido creada:
+              {props.resultCard.sucess
+                ? props.resultCard.cardURL
+                : props.resultCard.error}
+            </p>
 
             <div className="share2">
               <a
