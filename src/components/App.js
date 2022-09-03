@@ -1,30 +1,35 @@
-import "../styles/App.scss";
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import dataApi from "../services/api";
-import Footer from "./Footer";
-import Landing from "./Landing";
-import Card from "./Card";
+import '../styles/App.scss';
+import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import dataApi from '../services/api';
+import Footer from './Footer';
+import Landing from './Landing';
+import Card from './Card';
+import LocalStorage from '../services/localStorage';
 
 function App() {
-  const [avatar, setAvatar] = useState("");
+  const [avatar, setAvatar] = useState(LocalStorage.get('Avatar', ''));
   const [collapsable, setCollapsable] = useState(false);
-  const [dataCard, setDataCard] = useState({
-    palette: "1",
-    name: "",
-    job: "",
-    phone: "",
-    email: "",
-    linkedin: "",
-    github: "",
-    photo: "",
-  });
+  const [dataCard, setDataCard] = useState(
+    LocalStorage.get('DataCard', {
+      palette: '1',
+      name: '',
+      job: '',
+      phone: '',
+      email: '',
+      linkedin: '',
+      github: '',
+      photo: '',
+    })
+  );
   console.log(dataCard);
   const [resultCard, setResultCard] = useState({});
   const updateAvatar = (avatar) => {
     setAvatar(avatar);
     setDataCard({ ...dataCard, photo: avatar });
+    LocalStorage.set('Avatar', avatar);
   };
+
   const handleClickCollapse = (ev) => {
     setCollapsable(!collapsable);
   };
@@ -32,6 +37,7 @@ function App() {
   const handleInput = (inputName, inputValue) => {
     setDataCard({ ...dataCard, [inputName]: inputValue });
     console.log(dataCard);
+    LocalStorage.set('DataCard', dataCard);
   };
 
   const handlePalette = (valueInputRadio) => {
@@ -41,16 +47,21 @@ function App() {
   const handleReset = (ev) => {
     ev.preventDefault();
     setDataCard({
-      palette: "1",
-      name: "",
-      job: "",
-      phone: "",
-      email: "",
-      linkedin: "",
-      github: "",
-      photo: "",
+      palette: '1',
+      name: '',
+      job: '',
+      phone: '',
+      email: '',
+      linkedin: '',
+      github: '',
+      photo: '',
     });
+
+    setAvatar('');
     console.log(dataCard);
+
+    LocalStorage.remove('DataCard');
+    LocalStorage.remove('Avatar');
   };
 
   const handleCreateCard = (ev) => {
@@ -58,9 +69,11 @@ function App() {
       console.log(info);
 
       setResultCard(info);
+      LocalStorage.set('DataCard', dataCard);
     });
     console.log(resultCard.sucess ? resultCard.cardURL : resultCard.error);
   };
+
   return (
     <div className="App">
       <Routes>
