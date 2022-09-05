@@ -66,10 +66,10 @@
 }
 
 .card {
-  width: 300px;
+  max-width: 300px;
   height: 357px;
   padding: 8px 0;
-  margin: 20px 35px 40px 45px;
+  margin: 20px 35px 40px 35px;
   border-radius: 4px;
   background-color: $color-border-reset;
   display: flex;
