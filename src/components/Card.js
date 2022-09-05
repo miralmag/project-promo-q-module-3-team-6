@@ -15,20 +15,22 @@ function Card(props) {
           <Design
             dataCard={props.dataCard}
             handlePalette={props.handlePalette}
+            handleClickCollapseDesign={props.handleClickCollapseDesign}
+            collapsableDesign={props.collapsableDesign}
           />
 
           <Fill
             handleInput={props.handleInput}
             dataCard={props.dataCard}
-            collapsableShare={props.collapsableShare}
-            handleClickCollapse={props.handleClickCollapse}
+            handleClickCollapseFill={props.handleClickCollapseFill}
+            collapsableFill={props.collapsableFill}
           />
 
           <Share
             collapsableShare={props.collapsableShare}
             handleCreateCard={props.handleCreateCard}
             resultCard={props.resultCard}
-            handleClickCollapse={props.handleClickCollapse}
+            handleClickCollapseShare={props.handleClickCollapseShare}
           />
 
           {/* <!-- <div className="js-shareFieldset"> -->

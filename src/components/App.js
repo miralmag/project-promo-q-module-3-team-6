@@ -8,6 +8,8 @@ import Card from './Card';
 
 function App() {
   const [collapsableShare, setCollapsableShare] = useState(false);
+  const [collapsableFill, setCollapsableFill] = useState(false);
+  const [collapsableDesign, setCollapsableDesign] = useState(true);
   const [dataCard, setDataCard] = useState({
     palette: '1',
     name: '',
@@ -19,9 +21,20 @@ function App() {
     photo: '',
   });
   const [resultCard, setResultCard] = useState({});
-
-  const handleClickCollapse = (ev) => {
+  const handleClickCollapseFill = () => {
+    setCollapsableFill(!collapsableFill);
+    setCollapsableShare(false);
+    setCollapsableDesign(false);
+  };
+  const handleClickCollapseShare = () => {
     setCollapsableShare(!collapsableShare);
+    setCollapsableFill(false);
+    setCollapsableDesign(false);
+  };
+  const handleClickCollapseDesign = () => {
+    setCollapsableDesign(!collapsableDesign);
+    setCollapsableFill(false);
+    setCollapsableShare(false);
   };
 
   const handleInput = (ev) => {
@@ -65,12 +78,16 @@ function App() {
             <Card
               dataCard={dataCard}
               handlePalette={handlePalette}
-              handleClickCollapse={handleClickCollapse}
+              handleClickCollapseShare={handleClickCollapseShare}
               collapsableShare={collapsableShare}
               handleCreateCard={handleCreateCard}
               resultCard={resultCard}
               handleInput={handleInput}
               handleReset={handleReset}
+              collapsableDesign={collapsableDesign}
+              handleClickCollapseDesign={handleClickCollapseDesign}
+              handleClickCollapseFill={handleClickCollapseFill}
+              collapsableFill={collapsableFill}
             />
           }
         />

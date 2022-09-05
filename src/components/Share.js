@@ -49,7 +49,7 @@ function Share(props) {
       <div
         className="share1__div js-share"
         id="share"
-        onClick={props.handleClickCollapse}
+        onClick={props.handleClickCollapseShare}
       >
         <div className="header-container">
           <i className="fa-solid share1__div--icon fa-share-nodes"></i>
