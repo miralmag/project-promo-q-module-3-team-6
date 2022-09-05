@@ -79,7 +79,7 @@ function Design(props) {
       <div
         className="design__title js-design"
         id="design"
-        onClick={props.handleClickCollapseShare}
+        onClick={props.handleClickCollapseDesign}
       >
         <div className="design__container">
           <i className="design__title--icon fa-regular fa-object-ungroup"></i>

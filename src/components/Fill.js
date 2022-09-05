@@ -47,21 +47,6 @@ function Fill(props) {
               Imagen de perfil<span>*</span>
             </p>
 
-            <div className="imgButton">
-              <div className="action">
-                <label className="action__upload-btn" htmlFor="profileImg">
-                  Añadir imagen
-                </label>
-                <input
-                  type="file"
-                  name="profileImg"
-                  id="profileImg"
-                  className="action__hiddenField js__profile-upload-btn js_inputImg js_input"
-                  required=""
-                />
-              </div>
-              <div className="profile__preview js__profile-preview"></div>
-            </div>
             <GetAvatar
               avatar={props.avatar}
               updateAvatar={props.updateAvatar}
