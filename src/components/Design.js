@@ -5,6 +5,7 @@ function Design(props) {
     // ev.preventDefault();
     props.handlePalette(ev.target.value);
   };
+ 
   const renderDesign = () => {
     if (props.collapsableDesign) {
       return (

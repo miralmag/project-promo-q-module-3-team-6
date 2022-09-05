@@ -32,6 +32,8 @@ function App() {
   const [collapsableFill, setCollapsableFill] = useState(false);
   const [collapsableDesign, setCollapsableDesign] = useState(true);
   const [resultCard, setResultCard] = useState({});
+ 
+
   const handleClickCollapseFill = () => {
     setCollapsableFill(!collapsableFill);
     setCollapsableShare(false);
