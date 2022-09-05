@@ -1,6 +1,13 @@
 import '../styles/components/Fill.scss';
+import GetAvatar from './GetAvatar';
+import '../styles/components/GetAvatar.scss';
 
 function Fill(props) {
+  const handleInput = (ev) => {
+    const inputName = ev.target.name;
+    const inputValue = ev.target.value;
+    props.handleInput(inputName, inputValue);
+  };
   const renderFillForm = () => {
     if (props.collapsableFill) {
       return (
@@ -18,7 +25,7 @@ function Fill(props) {
               type="text"
               name="name"
               required=""
-              onChange={props.handleInput}
+              onChange={handleInput}
               value={props.dataCard.name}
             />
 
@@ -32,7 +39,7 @@ function Fill(props) {
               type="text"
               name="job"
               required=""
-              onChange={props.handleInput}
+              onChange={handleInput}
               value={props.dataCard.job}
             />
 
@@ -55,6 +62,10 @@ function Fill(props) {
               </div>
               <div className="profile__preview js__profile-preview"></div>
             </div>
+            <GetAvatar
+              avatar={props.avatar}
+              updateAvatar={props.updateAvatar}
+            />
 
             <label htmlFor="email">
               Email<span>*</span>
@@ -66,7 +77,7 @@ function Fill(props) {
               type="email"
               name="email"
               required=""
-              onChange={props.handleInput}
+              onChange={handleInput}
               value={props.dataCard.email}
             />
 
@@ -77,7 +88,7 @@ function Fill(props) {
               id="phone"
               type="tel"
               name="phone"
-              onChange={props.handleInput}
+              onChange={handleInput}
               value={props.dataCard.phone}
             />
 
@@ -91,7 +102,7 @@ function Fill(props) {
               type="text"
               name="linkedin"
               required=""
-              onChange={props.handleInput}
+              onChange={handleInput}
               value={props.dataCard.linkedin}
             />
 
@@ -105,7 +116,7 @@ function Fill(props) {
               type="text"
               name="github"
               required=""
-              onChange={props.handleInput}
+              onChange={handleInput}
               value={props.dataCard.github}
             />
           </form>

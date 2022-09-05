@@ -9,7 +9,12 @@ function Card(props) {
     <>
       <Header />
       <main className="main">
-        <CardPreview dataCard={props.dataCard} />
+        <CardPreview
+          dataCard={props.dataCard}
+          avatar={props.avatar}
+          updateAvatar={props.updateAvatar}
+          handleReset={props.handleReset}
+        />
 
         <section className="main__container">
           <Design
@@ -24,6 +29,8 @@ function Card(props) {
             dataCard={props.dataCard}
             handleClickCollapseFill={props.handleClickCollapseFill}
             collapsableFill={props.collapsableFill}
+            avatar={props.avatar}
+            updateAvatar={props.updateAvatar}
           />
 
           <Share

@@ -5,21 +5,32 @@ import dataApi from '../services/api';
 import Footer from './Footer';
 import Landing from './Landing';
 import Card from './Card';
+import LocalStorage from '../services/localStorage';
 
 function App() {
+  const [avatar, setAvatar] = useState(LocalStorage.get('Avatar', ''));
+  const [dataCard, setDataCard] = useState(
+    LocalStorage.get('DataCard', {
+      palette: '1',
+      name: '',
+      job: '',
+      phone: '',
+      email: '',
+      linkedin: '',
+      github: '',
+      photo: '',
+    })
+  );
+  console.log(dataCard);
+  const updateAvatar = (avatar) => {
+    setAvatar(avatar);
+    setDataCard({ ...dataCard, photo: avatar });
+    LocalStorage.set('Avatar', avatar);
+  };
+
   const [collapsableShare, setCollapsableShare] = useState(false);
   const [collapsableFill, setCollapsableFill] = useState(false);
   const [collapsableDesign, setCollapsableDesign] = useState(true);
-  const [dataCard, setDataCard] = useState({
-    palette: '1',
-    name: '',
-    job: '',
-    phone: '',
-    email: '',
-    linkedin: '',
-    github: '',
-    photo: '',
-  });
   const [resultCard, setResultCard] = useState({});
   const handleClickCollapseFill = () => {
     setCollapsableFill(!collapsableFill);
@@ -37,11 +48,10 @@ function App() {
     setCollapsableShare(false);
   };
 
-  const handleInput = (ev) => {
-    const inputName = ev.target.name;
-    const inputValue = ev.target.value;
-
+  const handleInput = (inputName, inputValue) => {
     setDataCard({ ...dataCard, [inputName]: inputValue });
+    console.log(dataCard);
+    LocalStorage.set('DataCard', dataCard);
   };
 
   const handlePalette = (valueInputRadio) => {
@@ -60,11 +70,21 @@ function App() {
       github: '',
       photo: '',
     });
+
+    setAvatar('');
+    console.log(dataCard);
+
+    LocalStorage.remove('DataCard');
+    LocalStorage.remove('Avatar');
   };
 
   const handleCreateCard = (ev) => {
-    ev.preventDefault();
-    dataApi(dataCard).then((info) => setResultCard(info));
+    dataApi(dataCard).then((info) => {
+      console.log(info);
+
+      setResultCard(info);
+      LocalStorage.set('DataCard', dataCard);
+    });
     console.log(resultCard.sucess ? resultCard.cardURL : resultCard.error);
   };
 
@@ -76,6 +96,8 @@ function App() {
           path="/card"
           element={
             <Card
+              avatar={avatar}
+              updateAvatar={updateAvatar}
               dataCard={dataCard}
               handlePalette={handlePalette}
               handleClickCollapseShare={handleClickCollapseShare}

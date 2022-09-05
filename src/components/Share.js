@@ -1,6 +1,11 @@
-import '../styles/components/Share.scss';
+import "../styles/components/Share.scss";
 
 function Share(props) {
+  const handleCreateCardShare = (ev) => {
+    ev.preventDefault();
+    props.handleCreateCard();
+  };
+
   const renderShareForm = () => {
     if (props.collapsableShare) {
       return (
@@ -8,30 +13,38 @@ function Share(props) {
           <div className="share1__container js-shareFieldset">
             <button
               className="share1__container--button js_shareBtn"
-              onClick={props.handleCreateCard}
+              onClick={handleCreateCardShare}
             >
               <i className="fa-solid fa-address-card"></i> Crear tarjeta
             </button>
-            <h1>
-              {props.resultCard.sucess
-                ? props.resultCard.cardURL
-                : props.resultCard.error}
-            </h1>
+
             <p className="js_warning warning"></p>
           </div>
 
           <div className="js_shareTwitter ">
             {/* <!-- ^este div va con la clase share2 --> */}
 
-            <p className="share2__p">La tarjeta ha sido creada:</p>
+            <p className="share2__p">
+              La tarjeta ha sido creada:
+              {props.resultCard.sucess
+                ? props.resultCard.cardURL
+                : props.resultCard.error}
+            </p>
 
             <div className="share2">
               <a
+                alt="linkCard"
+                rel="noreferrer"
                 className="share2__link js_link-card"
                 href="https://awesome-profile-card.com?id=A456DF0001"
                 target="_blank"
               ></a>
-              <a href="#" className="js_shareTwitterBtn" target="_blank">
+              <a
+                rel="noreferrer"
+                href="#"
+                className="js_shareTwitterBtn"
+                target="_blank"
+              >
                 <button className="share2__button--twitter">
                   <i className="fa-brands fa-twitter"></i>Compartir en twitter
                 </button>
