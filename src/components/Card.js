@@ -20,12 +20,12 @@ function Card(props) {
           <Fill
             handleInput={props.handleInput}
             dataCard={props.dataCard}
-            collapsable={props.collapsable}
+            collapsableShare={props.collapsableShare}
             handleClickCollapse={props.handleClickCollapse}
           />
 
           <Share
-            collapsable={props.collapsable}
+            collapsableShare={props.collapsableShare}
             handleCreateCard={props.handleCreateCard}
             resultCard={props.resultCard}
             handleClickCollapse={props.handleClickCollapse}

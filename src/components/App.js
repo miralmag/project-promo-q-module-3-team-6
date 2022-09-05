@@ -7,7 +7,7 @@ import Landing from './Landing';
 import Card from './Card';
 
 function App() {
-  const [collapsable, setCollapsable] = useState(false);
+  const [collapsableShare, setCollapsableShare] = useState(false);
   const [dataCard, setDataCard] = useState({
     palette: '1',
     name: '',
@@ -21,7 +21,7 @@ function App() {
   const [resultCard, setResultCard] = useState({});
 
   const handleClickCollapse = (ev) => {
-    setCollapsable(!collapsable);
+    setCollapsableShare(!collapsableShare);
   };
 
   const handleInput = (ev) => {
@@ -66,7 +66,7 @@ function App() {
               dataCard={dataCard}
               handlePalette={handlePalette}
               handleClickCollapse={handleClickCollapse}
-              collapsable={collapsable}
+              collapsableShare={collapsableShare}
               handleCreateCard={handleCreateCard}
               resultCard={resultCard}
               handleInput={handleInput}

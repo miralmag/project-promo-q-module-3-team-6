@@ -2,7 +2,7 @@ import '../styles/components/Share.scss';
 
 function Share(props) {
   const renderShareForm = () => {
-    if (props.collapsable) {
+    if (props.collapsableShare) {
       return (
         <>
           <div className="share1__container js-shareFieldset">
@@ -20,7 +20,7 @@ function Share(props) {
             <p className="js_warning warning"></p>
           </div>
 
-          <div className="js_shareTwitter collapsed">
+          <div className="js_shareTwitter ">
             {/* <!-- ^este div va con la clase share2 --> */}
 
             <p className="share2__p">La tarjeta ha sido creada:</p>
