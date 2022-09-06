@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import '../styles/components/Share.scss';
 
 function Share(props) {
+  const [collapsed, setCollapsed] = useState(true);
   const handleCreateCardShare = (ev) => {
     ev.preventDefault();
+    setCollapsed(false);
     props.handleCreateCard();
   };
 
@@ -21,9 +24,11 @@ function Share(props) {
             <p className="js_warning warning"></p>
           </div>
 
-          <div className="js_shareTwitter ">
-            {/* <!-- ^este div va con la clase share2 --> */}
-
+          <div
+            className={`js_shareTwitter  ${
+              collapsed === true && props.resultCard.sucess ? 'collapsed' : ''
+            }`}
+          >
             <p className="share2__p">
               La tarjeta ha sido creada:
               {props.resultCard.sucess

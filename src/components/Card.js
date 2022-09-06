@@ -45,10 +45,6 @@ function Card(props) {
             rotate={props.rotate}
             rotateFill={props.rotateFill}
           />
-
-          {/* <!-- <div className="js-shareFieldset"> -->
-      <!-- <fieldset className="share1"> -->
-      <!-- <fieldset className="share2"> --> */}
         </section>
       </main>
     </>
