@@ -5,7 +5,7 @@ function Design(props) {
     // ev.preventDefault();
     props.handlePalette(ev.target.value);
   };
- 
+
   const renderDesign = () => {
     if (props.collapsableDesign) {
       return (
@@ -86,7 +86,11 @@ function Design(props) {
           <i className="design__title--icon fa-regular fa-object-ungroup"></i>
           <h2 className="design__title--title">Diseña</h2>
         </div>
-        <i className="design__title--icon2 fa-solid fa-chevron-up js-design-arrow rotate"></i>
+        <i
+          className={`design__title--icon2 fa-solid fa-chevron-up js-design-arrow ${
+            props.rotateDesign === true ? 'rotate' : ''
+          }`}
+        ></i>
       </div>
       {renderDesign()}
     </fieldset>

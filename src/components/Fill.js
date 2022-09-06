@@ -122,7 +122,11 @@ function Fill(props) {
           <i className="fill__title--icon fa-solid fa-keyboard"></i>
           <h3 className="fill__title--word">rellena</h3>
         </div>
-        <i className="fill__title--chevron fa-solid fa-chevron-up js-fill-arrow"></i>
+        <i
+          className={`fill__title--chevron fa-solid fa-chevron-up js-fill-arrow ${
+            props.rotateFill === true ? 'rotate' : ''
+          }`}
+        ></i>
       </div>
 
       {renderFillForm()}

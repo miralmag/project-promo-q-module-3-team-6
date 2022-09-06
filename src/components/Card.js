@@ -22,6 +22,8 @@ function Card(props) {
             handlePalette={props.handlePalette}
             handleClickCollapseDesign={props.handleClickCollapseDesign}
             collapsableDesign={props.collapsableDesign}
+            rotateDesign={props.rotateDesign}
+            rotateFill={props.rotateFill}
           />
 
           <Fill
@@ -31,6 +33,8 @@ function Card(props) {
             collapsableFill={props.collapsableFill}
             avatar={props.avatar}
             updateAvatar={props.updateAvatar}
+            rotate={props.rotate}
+            rotateFill={props.rotateFill}
           />
 
           <Share
@@ -38,6 +42,8 @@ function Card(props) {
             handleCreateCard={props.handleCreateCard}
             resultCard={props.resultCard}
             handleClickCollapseShare={props.handleClickCollapseShare}
+            rotate={props.rotate}
+            rotateFill={props.rotateFill}
           />
 
           {/* <!-- <div className="js-shareFieldset"> -->

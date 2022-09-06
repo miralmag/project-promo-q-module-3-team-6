@@ -32,22 +32,32 @@ function App() {
   const [collapsableFill, setCollapsableFill] = useState(false);
   const [collapsableDesign, setCollapsableDesign] = useState(true);
   const [resultCard, setResultCard] = useState({});
- 
+  const [rotateDesign, setRotateDesign] = useState(true);
+  const [rotate, setRotate] = useState(false);
+  const [rotateFill, setRotateFill] = useState(false);
 
+  const handleClickCollapseDesign = () => {
+    setCollapsableDesign(!collapsableDesign);
+    setCollapsableFill(false);
+    setCollapsableShare(false);
+    setRotateDesign(!rotateDesign);
+    setRotateFill(false);
+    setRotate(false);
+  };
   const handleClickCollapseFill = () => {
     setCollapsableFill(!collapsableFill);
     setCollapsableShare(false);
     setCollapsableDesign(false);
+    setRotate(false);
+    setRotateDesign(false);
+    setRotateFill(!rotateFill);
   };
   const handleClickCollapseShare = () => {
     setCollapsableShare(!collapsableShare);
     setCollapsableFill(false);
     setCollapsableDesign(false);
-  };
-  const handleClickCollapseDesign = () => {
-    setCollapsableDesign(!collapsableDesign);
-    setCollapsableFill(false);
-    setCollapsableShare(false);
+    setRotate(!rotate);
+    setRotateFill(false);
   };
 
   const handleInput = (inputName, inputValue) => {
@@ -82,8 +92,6 @@ function App() {
 
   const handleCreateCard = (ev) => {
     dataApi(dataCard).then((info) => {
-      console.log(info);
-
       setResultCard(info);
       LocalStorage.set('DataCard', dataCard);
     });
@@ -112,6 +120,9 @@ function App() {
               handleClickCollapseDesign={handleClickCollapseDesign}
               handleClickCollapseFill={handleClickCollapseFill}
               collapsableFill={collapsableFill}
+              rotateDesign={rotateDesign}
+              rotate={rotate}
+              rotateFill={rotateFill}
             />
           }
         />
