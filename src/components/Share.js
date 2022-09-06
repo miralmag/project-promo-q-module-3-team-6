@@ -42,14 +42,14 @@ function Share(props) {
                 rel="noreferrer"
                 className="share2__link js_link-card"
                 href="https://awesome-profile-card.com?id=A456DF0001"
-                target="_blank"
-              ></a>
+                target="_blank">
+              </a>
               <a
+                alt="twitterButton"
                 rel="noreferrer"
                 href="#"
                 className="js_shareTwitterBtn"
-                target="_blank"
-              >
+                target="_blank">
                 <button className="share2__button--twitter">
                   <i className="fa-brands fa-twitter"></i>Compartir en twitter
                 </button>
