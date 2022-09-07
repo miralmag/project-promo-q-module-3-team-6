@@ -1,5 +1,5 @@
 const dataApi = (data) => {
-  return fetch('https://localhost:4000/card', {
+  return fetch('https://localhost:4000/card/:id', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
