@@ -41,22 +41,18 @@ function Share(props) {
                 alt="linkCard"
                 rel="noreferrer"
                 className="share2__link js_link-card"
-<<<<<<< HEAD
                 href={`${props.resultCard.cardURL}`}
                 target="_blank"
               >
                 {`${props.resultCard.cardURL}`}{' '}
-=======
-                href="https://awesome-profile-card.com?id=A456DF0001"
-                target="_blank">
->>>>>>> 23d252aa18abcb498df5758658bd74d8f4c7aa1c
               </a>
               <a
                 alt="twitterButton"
                 rel="noreferrer"
                 href={`https://twitter.com/intent/tweet?text=%C2%A1¡¡He%20creado%20mi%20propia%20tarjeta%20de%20contacto!!!%20Puedes%20verla%20aqu%C3%AD%3A&url=${props.resultCard.cardURL}`}
                 className="js_shareTwitterBtn"
-                target="_blank">
+                target="_blank"
+              >
                 <button className="share2__button--twitter">
                   <i className="fa-brands fa-twitter"></i>Compartir en twitter
                 </button>
