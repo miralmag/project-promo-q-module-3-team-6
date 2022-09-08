@@ -49,6 +49,7 @@
       margin-bottom: 20px;
       margin-top: 20px;
       gap: 5px;
+      cursor: pointer;
     }
   }
 }
@@ -97,6 +98,7 @@
     border: 1px $color-icon;
     margin-bottom: 20px;
     color: $color-border-reset;
+    cursor: pointer;
   }
 }
 

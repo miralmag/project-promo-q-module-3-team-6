@@ -26,7 +26,7 @@ function Share(props) {
 
           <div
             className={`js_shareTwitter  ${
-              collapsed === true && props.resultCard.sucess ? 'collapsed' : ''
+              collapsed === true ? 'collapsed' : ''
             }`}
           >
             <p className="share2__p">
