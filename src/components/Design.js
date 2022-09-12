@@ -1,4 +1,5 @@
 import '../styles/components/Design.scss';
+import bat from '../images/bat_red.png';
 
 function Design(props) {
   const handlePalette = (ev) => {
@@ -86,11 +87,11 @@ function Design(props) {
           <i className="design__title--icon fa-regular fa-object-ungroup"></i>
           <h2 className="design__title--title">Diseña</h2>
         </div>
-        <i
+        <img alt='bat' src={bat}
           className={`design__title--icon2 fa-solid fa-chevron-up js-design-arrow ${
             props.rotateDesign === true ? 'rotate' : ''
           }`}
-        ></i>
+        ></img>
       </div>
       {renderDesign()}
     </fieldset>

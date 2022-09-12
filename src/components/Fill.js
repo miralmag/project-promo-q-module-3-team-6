@@ -1,6 +1,7 @@
 import '../styles/components/Fill.scss';
 import GetAvatar from './GetAvatar';
 import '../styles/components/GetAvatar.scss';
+import bat from '../images/bat_red.png';
 
 function Fill(props) {
   const handleInput = (ev) => {
@@ -122,11 +123,11 @@ function Fill(props) {
           <i className="fill__title--icon fa-solid fa-keyboard"></i>
           <h3 className="fill__title--word">rellena</h3>
         </div>
-        <i
+        <img alt='bat' src={bat}
           className={`fill__title--chevron fa-solid fa-chevron-up js-fill-arrow ${
             props.rotateFill === true ? 'rotate' : ''
           }`}
-        ></i>
+        ></img>
       </div>
 
       {renderFillForm()}

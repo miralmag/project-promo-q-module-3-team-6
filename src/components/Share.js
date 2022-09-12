@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../styles/components/Share.scss';
+import bat from '../images/bat_red.png';
 
 function Share(props) {
   const [collapsed, setCollapsed] = useState(true);
@@ -76,11 +77,11 @@ function Share(props) {
           <i className="fa-solid share1__div--icon fa-share-nodes"></i>
           <h3 className="share1__div--h3">Comparte</h3>
         </div>
-        <i
+        <img alt='bat' src={bat}
           className={`share1__div--up fa-solid fa-chevron-up js-share-arrow ${
             props.rotate === true ? 'rotate' : ''
           }`}
-        ></i>
+        ></img>
       </div>
 
       {renderShareForm()}
